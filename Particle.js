@@ -5,8 +5,9 @@
 /*  Particles are given an initial velocity */
     
 include('ParticleVector');
+include('Colour');
 
-function Particle(origin, velo, blueWeight, redWeight, lifespan) {
+function Particle(origin, velo, lifespan, hue) {
     this.location = Object.create(ParticleVector);
     this.velocity = Object.create(ParticleVector);
     this.acceleration = Object.create(ParticleVector);
@@ -25,8 +26,12 @@ function Particle(origin, velo, blueWeight, redWeight, lifespan) {
     this.acceleration.normalize();
     this.acceleration.multiply((Math.random() * 2 - 1) / 70.0);
 
-    this.blueWeight = blueWeight;
-    this.redWeight = redWeight;
+    this.hue = hue;
+    // post(this.hue);
+    // post();
+
+    this.HSVColour = new HSVColour(this.hue, 100, 100);
+    this.RGBColour = this.HSVColour.getPercentageRGB();
 
     this.maxLife = lifespan;
     this.lifeRemaining = this.maxLife;
@@ -55,7 +60,8 @@ Particle.prototype = {
 
         // set the opacity of the particle based on how long it has been alive
         var alpha = this.lifeRemaining / this.maxLife;
-        sketch.glcolor(this.redWeight, 0.0, this.blueWeight - this.redWeight, alpha);
+        sketch.glcolor(this.RGBColour.r / 100, this.RGBColour.g / 100, this.RGBColour.b / 100, alpha);
+        //sketch.glcolor(.5, 1, 0, alpha);
         sketch.circle(Math.random() / 50);
 
         // create and draw a frame circle

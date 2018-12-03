@@ -29,6 +29,12 @@ ParticleJet.prototype = {
         this.angle %= 360;
     },
 
+    setHue: function(hue) {
+        if (typeof hue !== "undefined") {
+            this.hue = hue
+        }
+    },
+
     // this method pushes 360 particles onto pArray, which travel outward in a circle
     pushRound: function() {
         
@@ -42,7 +48,7 @@ ParticleJet.prototype = {
 
         velo.multiply(Math.random() / 35);
 
-        this.pArray.push(new Particle(pOrigin, velo, this.rate, this.radius, 100*(this.radius*2)));
+        this.pArray.push(new Particle(pOrigin, velo, 100*(this.radius*2), this.hue));
 
         this.incrementAngle();
     },
@@ -56,8 +62,9 @@ ParticleJet.prototype = {
         }
     },
 
-    update: function() {
-        for (i = 0; i < this.rate; i++) {
+    update: function(hue) {
+        this.setHue(hue);
+        for (i = 0; i < this.rate * 10; i++) {
             this.pushRound();
         }
         this.runChildren();

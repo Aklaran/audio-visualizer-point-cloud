@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 34.0, -1001.0, 1475.0, 967.0 ],
+		"rect" : [ 34.0, 79.0, 1212.0, 687.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,63 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"cols" : 50,
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-53",
+					"maxclass" : "jit.cellblock",
+					"numinlets" : 2,
+					"numoutlets" : 4,
+					"outlettype" : [ "list", "", "", "" ],
+					"patching_rect" : [ 417.0, 573.0, 389.0, 87.0 ],
+					"rows" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-17",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 849.5, 615.0, 95.0, 22.0 ],
+					"style" : "",
+					"text" : "drawPointCloud"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-63",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 985.0, 595.0, 111.0, 22.0 ],
+					"style" : "",
+					"text" : "updateNoiseMatrix"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"maxclass" : "jit.fpsgui",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 790.0, 759.0, 80.0, 35.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-66",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -52,7 +109,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 0.0, 0.0, 640.0, 480.0 ],
+						"rect" : [ 59.0, 104.0, 640.0, 480.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -79,6 +136,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-17",
@@ -1213,9 +1271,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 15.0, 46.0, 65.0, 22.0 ],
+					"patching_rect" : [ 15.0, 46.0, 58.0, 22.0 ],
 					"style" : "",
-					"text" : "qmetro 41"
+					"text" : "qmetro 7"
 				}
 
 			}
@@ -2250,6 +2308,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-8", 2 ],
 					"source" : [ "obj-18", 1 ]
 				}
@@ -2301,6 +2366,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-52", 0 ],
+					"order" : 0,
+					"source" : [ "obj-24", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-53", 0 ],
+					"order" : 1,
 					"source" : [ "obj-24", 0 ]
 				}
 
@@ -2374,6 +2448,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-30", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
 					"source" : [ "obj-31", 0 ]
 				}
@@ -2422,7 +2503,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-40", 0 ],
-					"midpoints" : [ 1016.5, 230.0, 961.5, 230.0 ],
 					"source" : [ "obj-38", 0 ]
 				}
 
@@ -2545,6 +2625,13 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-30", 0 ],
+					"source" : [ "obj-63", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-30", 0 ],
 					"midpoints" : [ 433.25, 551.5, 961.5, 551.5 ],
 					"source" : [ "obj-68", 0 ]
 				}
@@ -2574,63 +2661,63 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "VisualDriver.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "fft_bass.maxpat",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "scaleAmplitudes.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "fft_vocals.maxpat",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Vector.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Particle.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "PointCloud.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "ParticleJet.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "ParticleVector.js",
-				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/tuts/points_cloud",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 1/proj/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

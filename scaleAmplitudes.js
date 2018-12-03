@@ -5,11 +5,14 @@ var bassAmps = new JitterMatrix('bassAmps');
 var vocalAmps = new JitterMatrix('vocalAmps');
 var op3m = new JitterObject('jit.3m');
 
-function bang() {
-		raw = bassAmps.getcell(1)[0];
-		scaledradius = (raw / 100) + 0.2;
+var bassAvg = 0
+declareattribute('bassAvg');
 
-		scaledthreshold = (raw/ 750) + 0.03;
+function bang() {
+		raw = bassAvg;
+		scaledradius = (raw / 10) + 0.2;
+
+		scaledthreshold = (raw/ 75) + 0.03;
 		outlet(0, scaledradius);
 		outlet(1, scaledthreshold);
 

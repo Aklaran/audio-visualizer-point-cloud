@@ -10,7 +10,7 @@ include('ParticleVector');
     --------------------  */
 
 var window = new JitterObject('jit.window', 'point_cloud');
-window.floating = 1;
+window.floating = 0;
 window.size = [600, 600];
 window.fsaa = 1;
 window.pos = [750, -2000];
@@ -32,6 +32,7 @@ sketch.blend = 'alphablend';
 
 var noiseMatrix = new JitterMatrix('noiseMatrix'); // accessing the jitter matrix created inside the patch
 
+
 var dim = 50;
 declareattribute('dim');
 
@@ -44,23 +45,39 @@ declareattribute('particleRate');
 var radius = .2;
 declareattribute('radius');
 
+var hue = 0;
+declareattribute('hue');
+
 /*  --------------------------------------------------
     Creating Point Cloud object with patcher variables
     --------------------------------------------------  */
 
-var pointCloud = new PointCloud(noiseMatrix, sketch);
+var pointCloud = new PointCloud(sketch);
 var jetOrigin = Object.create(ParticleVector);
 var particleJet = new ParticleJet(jetOrigin, radius, sketch);
+
+function updateNoiseMatrix() {
+    post(hue);
+} 
+
+function drawPointCloud() { 
+    post(hue);
+}
+
 
 function draw() {
     render.erase();
 
-    pointCloud.drawLines(dim, threshold);
+    pointCloud.drawCloud(noiseMatrix, threshold);
+    //pointCloud.drawLines(dim, threshold);
     particleJet.setRate(particleRate);
     particleJet.setRadius(radius);
-    particleJet.update();
+    particleJet.update(hue);
+
     sketch.draw();
 
     render.drawswap();
     sketch.reset();
+
+    outlet(0, 'bang'); // outputting drawbang to count fps
 }
