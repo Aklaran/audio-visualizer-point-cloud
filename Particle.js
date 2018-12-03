@@ -6,7 +6,7 @@
     
 include('ParticleVector');
 
-function Particle(origin, velo, blueWeight, redWeight, lifespan) {
+function Particle(origin, velo, blueWeight, redWeight, lifespan, hue) {
     this.location = Object.create(ParticleVector);
     this.velocity = Object.create(ParticleVector);
     this.acceleration = Object.create(ParticleVector);
@@ -27,6 +27,9 @@ function Particle(origin, velo, blueWeight, redWeight, lifespan) {
 
     this.blueWeight = blueWeight;
     this.redWeight = redWeight;
+
+
+    this.hue = 283
 
     this.maxLife = lifespan;
     this.lifeRemaining = this.maxLife;
@@ -55,7 +58,7 @@ Particle.prototype = {
 
         // set the opacity of the particle based on how long it has been alive
         var alpha = this.lifeRemaining / this.maxLife;
-        sketch.glcolor(this.redWeight, 0.0, this.blueWeight - this.redWeight, alpha);
+        sketch.glcolor(this.redWeight, 0, this.blueWeight, alpha);
         sketch.circle(Math.random() / 50);
 
         // create and draw a frame circle
