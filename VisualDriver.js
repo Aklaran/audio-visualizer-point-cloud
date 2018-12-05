@@ -4,6 +4,7 @@ include('Vector');
 include('PointCloud');
 include('ParticleJet');
 include('ParticleVector');
+include('PlayerCursor');
 
 /*  --------------------
     Jitter context setup
@@ -48,6 +49,13 @@ declareattribute('radius');
 var hue = 0;
 declareattribute('hue');
 
+var playerPos = 0;
+function setPlayerPos(e) {
+    if (e >= 0) {
+        playerPos = e;
+    }
+}
+
 /*  --------------------------------------------------
     Creating Point Cloud object with patcher variables
     --------------------------------------------------  */
@@ -55,6 +63,7 @@ declareattribute('hue');
 var pointCloud = new PointCloud(sketch);
 var jetOrigin = Object.create(ParticleVector);
 var particleJet = new ParticleJet(jetOrigin, radius, sketch);
+var playerCursor = new PlayerCursor(sketch, -.2, -.5, -.5);
 
 function updateNoiseMatrix() {
     post(hue);
@@ -68,11 +77,19 @@ function drawPointCloud() {
 function draw() {
     render.erase();
 
-    pointCloud.drawCloud(noiseMatrix, threshold);
-    //pointCloud.drawLines(dim, threshold);
-    particleJet.setRate(particleRate);
-    particleJet.setRadius(radius);
-    particleJet.update(hue);
+    //                ALL DRAW CALLS                 //
+    // ----------------------------------------------//
+
+    // pointCloud.drawCloud(noiseMatrix, threshold);
+    // particleJet.setRate(particleRate);
+    // particleJet.setRadius(radius);
+    // particleJet.update(hue);
+    playerCursor.updatePlayerY(playerPos);
+    playerCursor.drawStaff();
+    playerCursor.drawCursor();
+    
+
+    // ----------------------------------------------//
 
     sketch.draw();
 

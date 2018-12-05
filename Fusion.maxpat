@@ -52,7 +52,7 @@
 							"modernui" : 1
 						}
 ,
-						"rect" : [ 34.0, 79.0, 1212.0, 687.0 ],
+						"rect" : [ 34.0, 79.0, 653.0, 687.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -81,6 +81,46 @@
 						"subpatcher_template" : "",
 						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-75",
+									"linecount" : 2,
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1085.0, 707.0, 94.0, 35.0 ],
+									"style" : "",
+									"text" : "playerPos $1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-69",
+									"maxclass" : "number",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "", "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 1085.0, 671.0, 50.0, 22.0 ],
+									"style" : ""
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-13",
+									"maxclass" : "newobj",
+									"numinlets" : 0,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1085.0, 643.0, 40.0, 22.0 ],
+									"style" : "",
+									"text" : "r midi"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-67",
 									"maxclass" : "message",
@@ -272,7 +312,26 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"visible" : 1,
 										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-3",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 129.0, 136.0, 104.0, 22.0 ],
+													"saved_object_attributes" : 													{
+														"filename" : "PlayerCursor.js",
+														"parameter_enable" : 0
+													}
+,
+													"style" : "",
+													"text" : "js PlayerCursor.js"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-2",
 													"maxclass" : "newobj",
@@ -922,7 +981,6 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
-										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-3",
@@ -2347,6 +2405,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-69", 0 ],
+									"source" : [ "obj-13", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-67", 0 ],
 									"source" : [ "obj-14", 0 ]
 								}
@@ -2380,6 +2445,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-30", 0 ],
+									"midpoints" : [ 894.0, 798.0, 996.5, 798.0 ],
 									"source" : [ "obj-17", 0 ]
 								}
 
@@ -2701,6 +2767,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-75", 0 ],
+									"source" : [ "obj-69", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
 									"source" : [ "obj-7", 0 ]
 								}
@@ -2709,6 +2782,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-30", 0 ],
+									"midpoints" : [ 1011.5, 798.0, 996.5, 798.0 ],
 									"source" : [ "obj-70", 0 ]
 								}
 
@@ -2749,6 +2823,14 @@
 									"destination" : [ "obj-60", 0 ],
 									"order" : 3,
 									"source" : [ "obj-73", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-30", 0 ],
+									"midpoints" : [ 1094.5, 732.0, 996.5, 732.0 ],
+									"source" : [ "obj-75", 0 ]
 								}
 
 							}
@@ -2839,6 +2921,18 @@
 						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-4",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 593.0, 1048.0, 42.0, 22.0 ],
+									"style" : "",
+									"text" : "s midi"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-2",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -2919,7 +3013,6 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
-										"visible" : 1,
 										"boxes" : [ 											{
 												"box" : 												{
 													"comment" : "",
@@ -10703,7 +10796,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-1", 0 ],
-									"order" : 1,
+									"order" : 2,
 									"source" : [ "obj-199", 0 ]
 								}
 
@@ -10712,6 +10805,14 @@
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
 									"order" : 0,
+									"source" : [ "obj-199", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"order" : 1,
 									"source" : [ "obj-199", 0 ]
 								}
 
@@ -10837,9 +10938,9 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
-			"obj-2::obj-187::obj-65" : [ "live.tab[1]", "live.tab", 0 ],
+			"obj-2::obj-187::obj-54" : [ "live.tab", "live.tab", 0 ],
 			"obj-2::obj-201" : [ "live.gain~", "live.gain~", 0 ],
-			"obj-2::obj-187::obj-54" : [ "live.tab", "live.tab", 0 ]
+			"obj-2::obj-187::obj-65" : [ "live.tab[1]", "live.tab", 0 ]
 		}
 ,
 		"dependency_cache" : [ 			{
@@ -10942,6 +11043,13 @@
 			}
 , 			{
 				"name" : "Colour.js",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 2/audio-visualizer-point-cloud",
+				"patcherrelativepath" : ".",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "PlayerCursor.js",
 				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 2/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
