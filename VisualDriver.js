@@ -87,6 +87,7 @@ function draw() {
     playerCursor.updatePlayerY(playerPos);
     playerCursor.drawStaff();
     playerCursor.drawCursor();
+    playerCursor.drawPlayerTrail();
     
 
     // ----------------------------------------------//

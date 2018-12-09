@@ -88,9 +88,9 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1085.0, 707.0, 94.0, 35.0 ],
+									"patching_rect" : [ 1085.0, 707.0, 85.0, 35.0 ],
 									"style" : "",
-									"text" : "playerPos $1"
+									"text" : "setPlayerPos $1"
 								}
 
 							}
@@ -314,6 +314,24 @@
 										"subpatcher_template" : "",
 										"visible" : 1,
 										"boxes" : [ 											{
+												"box" : 												{
+													"id" : "obj-4",
+													"maxclass" : "newobj",
+													"numinlets" : 1,
+													"numoutlets" : 1,
+													"outlettype" : [ "" ],
+													"patching_rect" : [ 240.0, 136.0, 137.0, 22.0 ],
+													"saved_object_attributes" : 													{
+														"filename" : "FixedLengthQueue.js",
+														"parameter_enable" : 0
+													}
+,
+													"style" : "",
+													"text" : "js FixedLengthQueue.js"
+												}
+
+											}
+, 											{
 												"box" : 												{
 													"id" : "obj-3",
 													"maxclass" : "newobj",
@@ -11050,6 +11068,13 @@
 			}
 , 			{
 				"name" : "PlayerCursor.js",
+				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 2/audio-visualizer-point-cloud",
+				"patcherrelativepath" : ".",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "FixedLengthQueue.js",
 				"bootpath" : "~/Documents/CMU/18090 Twisted Signals/Project 2/audio-visualizer-point-cloud",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",

@@ -1,3 +1,6 @@
+include('FixedLengthQueue');
+include('ParticleVector');
+
 /*  ----------------------------------
     Definition for a Player Cursor class (VIEW)
     ---------------------------------- */
@@ -13,6 +16,8 @@ function PlayerCursor(sketch, yUpper, yLower, x) {
     this.yUpper = yUpper;
     this.yLower = yLower;
     this.x = x;
+
+    this.pastPoses = new FixedLengthQueue(50);
 }
 
 PlayerCursor.prototype = {
@@ -23,6 +28,9 @@ PlayerCursor.prototype = {
         relPos = availSpace * relNote;
 
         this.playerY = this.yLower + relPos;
+
+        // push to past positions queue
+        this.pastPoses.push(this.playerY);
     },
 
     drawStaff: function() {
@@ -31,13 +39,27 @@ PlayerCursor.prototype = {
 
     drawCursor: function() {
         this.sketch.moveto(this.x, this.playerY, 0);
-        post(this.playerY);
-        post();
         this.sketch.glcolor(1, 0, 0, 1);
 
         this.sketch.circle(1 / 50);
 
-    }
+    },
+
+    drawPlayerTrail: function() {
+        currX = this.x;
+        currY = this.playerY;
+        lastPoint = Object.create(ParticleVector);
+        lastPoint.x = currX;
+        lastPoint.y = currY;
+
+        for (var i = this.pastPoses.length - 1; i > -1; i--) {
+            currX -= .01;
+            currY = this.pastPoses[i];
+            this.sketch.linesegment(currX, currY, 0, lastPoint.x, lastPoint.y, 0);
+            lastPoint.x = currX;
+            lastPoint.y = currY;
+        }
+    },
 
 
 }
