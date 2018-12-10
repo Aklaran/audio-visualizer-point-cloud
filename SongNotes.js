@@ -10,12 +10,16 @@ include('ParticleVector');
     that is at the playerX is the current note the
     player is being scored on. */
 
-function SongNotes(sketch, yUpper, yLower, x, qNoteLength) {
+function SongNotes(sketch, yUpper, yLower, x, qNoteLength, minNote, maxNote) {
     this.sketch = sketch;
     this.yUpper = yUpper;
     this.yLower = yLower;
     this.playerX = x;
     this.quarterNoteLength = qNoteLength;
+
+    this.minNote = minNote;
+    this.maxNote = maxNote;
+    
 
     this.notes = [];
 }
@@ -23,13 +27,11 @@ function SongNotes(sketch, yUpper, yLower, x, qNoteLength) {
 SongNotes.prototype = {
     updateNotes: function(notes) { 
         this.notes = notes;
-        post('dickbutt');
-        post(this.notes);
-        post();
     },
 
     getNoteY: function(midiNote) {
-        relNote = midiNote / 128;
+        relScale = this.maxNote - this.minNote;
+        relNote = (midiNote - this.minNote) / relScale;
         availSpace = this.yUpper - this.yLower;
         relPos = availSpace * relNote;
 

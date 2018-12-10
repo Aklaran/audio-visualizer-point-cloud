@@ -5,13 +5,15 @@ include('Particle');
 
 // Particle Array
 
-function ParticleJet (origin, radius, sketch) {
+function ParticleJet (origin, radius, sketch, childLifespan) {
     this.origin = origin;
     this.pArray = []
     this.angle = 0;
     this.rate = 0;
     this.radius = radius
     this.sketch = sketch;
+
+    this.childLifespan = childLifespan
 }
 
 ParticleJet.prototype = {
@@ -48,7 +50,7 @@ ParticleJet.prototype = {
 
         velo.multiply(Math.random() / 35);
 
-        this.pArray.push(new Particle(pOrigin, velo, 100*(this.radius*2), this.hue));
+        this.pArray.push(new Particle(pOrigin, velo, this.childLifespan, this.hue));
 
         this.incrementAngle();
     },
