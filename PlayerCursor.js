@@ -2,7 +2,7 @@ include('FixedLengthQueue');
 include('ParticleVector');
 
 /*  ----------------------------------
-    Definition for a Player Cursor class (VIEW)
+    Definition for a Player Cursor class
     ---------------------------------- */
 
 /*  Player Cursor class is responsible for displaying
@@ -17,7 +17,7 @@ function PlayerCursor(sketch, yUpper, yLower, x) {
     this.yLower = yLower;
     this.x = x;
 
-    this.pastPoses = new FixedLengthQueue(50);
+    this.pastPoses = new FixedLengthQueue(20);
 }
 
 PlayerCursor.prototype = {

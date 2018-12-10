@@ -5,6 +5,7 @@ include('PointCloud');
 include('ParticleJet');
 include('ParticleVector');
 include('PlayerCursor');
+include('SongNotes');
 
 /*  --------------------
     Jitter context setup
@@ -63,14 +64,19 @@ function setPlayerPos(e) {
 var pointCloud = new PointCloud(sketch);
 var jetOrigin = Object.create(ParticleVector);
 var particleJet = new ParticleJet(jetOrigin, radius, sketch);
-var playerCursor = new PlayerCursor(sketch, -.2, -.5, -.5);
 
-function updateNoiseMatrix() {
-    post(hue);
-} 
+var staffLower = -.5;
+var staffUpper = .2;
+var meetingPointX = -.5;
+var playerCursor = new PlayerCursor(sketch, staffUpper, staffLower, meetingPointX);
+var songNotes = new SongNotes(sketch, staffUpper, staffLower, meetingPointX, .5);
 
-function drawPointCloud() { 
-    post(hue);
+// Updates the upcoming notes stored in the songNotes object
+// every time the list is updated in Max
+function list(a) {
+    projectedNotes = arrayfromargs(messagename, arguments);
+    
+    songNotes.updateNotes(projectedNotes);
 }
 
 
@@ -89,6 +95,7 @@ function draw() {
     playerCursor.drawCursor();
     playerCursor.drawPlayerTrail();
     
+    songNotes.drawNotes();
 
     // ----------------------------------------------//
 
